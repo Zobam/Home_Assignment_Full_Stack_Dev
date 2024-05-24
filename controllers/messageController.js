@@ -20,7 +20,9 @@ exports.getMessages = async (req, res) => {
     });
   } else {
     try {
-      const messages = await Message.find({}).select({});
+      const messages = await Message.find({ receiverID: req.user._id }).select(
+        {}
+      );
       res.status(200).json({ status: "success", data: messages });
     } catch (error) {
       console.log(error.message);
@@ -40,7 +42,7 @@ exports.updateMessage = async (req, res) => {
         .json({ message: `cannot find message with id: ${id}` });
     }
     const updatedMessage = await Message.findById(id);
-    res.status(200).json({ updatedMessage });
+    res.status(200).json({ updatedMessage, user: req.user });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });
