@@ -10,8 +10,7 @@ const userRoutes = require("./routes/user");
 const messagesRoute = require("./routes/messages");
 // mongoose
 const mongoose = require("mongoose");
-const uri =
-  "mongodb+srv://upc4you:Adgjmp12.@messages.5cc75uy.mongodb.net/?retryWrites=true&w=majority&appName=messages";
+const uri = `mongodb+srv://${process.env.MONGODB_ATLAS_USER}:${process.env.MONGODB_ATLAS_USER_PASSWORD}@messages.5cc75uy.mongodb.net/?retryWrites=true&w=majority&appName=messages`;
 
 const app = express();
 app.use(cors());

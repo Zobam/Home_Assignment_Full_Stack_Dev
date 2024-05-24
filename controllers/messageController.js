@@ -33,7 +33,7 @@ exports.updateMessage = async (req, res) => {
   try {
     const { id } = req.params;
     // const product = await Product.findById(id)
-    const message = await Message.findByIdAndUpdate(id, req.body);
+    const message = await Message.findByIdAndUpdate(id, { isRead: true });
     if (!message) {
       return res
         .status(404)
