@@ -1,28 +1,33 @@
 const mongoose = require("mongoose");
 
-const messageSchema = new mongoose.Schema({
-  subject: {
-    type: String,
-    required: true,
+const messageSchema = new mongoose.Schema(
+  {
+    subject: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    senderID: {
+      type: String,
+      required: true,
+    },
+    receiverID: {
+      type: String,
+      required: true,
+    },
+    isRead: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
-  content: {
-    type: String,
-    required: true,
-  },
-  senderID: {
-    type: String,
-    required: true,
-  },
-  receiverID: {
-    type: String,
-    required: true,
-  },
-  isRead: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 const Message = mongoose.model("Message", messageSchema);
 
